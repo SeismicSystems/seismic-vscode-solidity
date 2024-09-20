@@ -6,6 +6,7 @@ import * as codegen from 'nethereum-codegen';
 import { initialiseProject } from '../common/projectService';
 import * as workspaceUtil from './workspaceUtil';
 import { SettingsService } from './settingsService';
+import { OutputChannelService} from './outputChannelService';
 
 
 export function autoCodeGenerateAfterCompilation(compiledFiles: Array<string>, args: any, diagnostics: vscode.DiagnosticCollection) {
@@ -55,35 +56,33 @@ export function generateNethereumCodeSettingsFile() {
     }
 }
 
+
 export function codeGenerateAllFilesFromNethereumGenAbisFile(args: any, diagnostics: vscode.DiagnosticCollection) {
     try {
-        const abiFiles = getCodeGenerationAbiFilesFromSettings(args.fsPath);
-        if (abiFiles !== undefined) {
-        const root = workspaceUtil.getCurrentProjectInWorkspaceRootFsPath();
-        const settings = getCodeGenerationSettings();
-        let lang = 0; // csharp
-        if (settings !== undefined) {
-            if (settings.lang !== undefined) {
-                lang = settings.lang;
+        const settingsPath = args.fsPath;
+        const fileName = path.basename(settingsPath);
+
+        const isValid = fileName.match(/^(.*\.)?nethereum-gen\.multisettings$/);
+        if (isValid) {
+            if (fs.existsSync(settingsPath)) {
+                const settings = JSON.parse(fs.readFileSync(settingsPath, 'utf8'));
+                const root = workspaceUtil.getCurrentProjectInWorkspaceRootFsPath();
+                const files = codegen.generateFilesFromConfigSetsArray(settings, root);
+                const outputChannel = OutputChannelService.getInstance().getNethereumCodeGenerationOutputChannel();
+                outputChannel.clear();
+                outputChannel.appendLine('Code generation completed');
+                files.forEach(file => {
+                    outputChannel.appendLine(file);
+                });
+            } else {
+                throw 'nethereum-gen.multisettings not found';
             }
         }
-        // /home/juan/Documents/repos/artifacts/contracts/tokens/Items.sol/Items.json
-        // /home/juan/Documents/repos/visions-contracts/artifacts/contracts/tokens/Items.sol
-
-        abiFiles.forEach(file => codeGenerateCQS(path.join(root, file), lang, args, diagnostics));
-        const outputChannel = vscode.window.createOutputChannel('solidity code generation');
-        outputChannel.clear();
-        outputChannel.appendLine('Code generation completed');
-        outputChannel.show();
-
-        } else {
-            throw 'nethereum-gen.abis not found';
-        }
     } catch (e) {
-        const outputChannel = vscode.window.createOutputChannel('solidity code generation');
+        const outputChannel = OutputChannelService.getInstance().getNethereumCodeGenerationOutputChannel();
         outputChannel.clear();
         outputChannel.appendLine('Error generating code:');
-        outputChannel.appendLine('Please provide a file named: nethereum-gen.abis with at the project root, with an array of xxx.abi or yyy.json files');
+        outputChannel.appendLine('Please provide a valid file named: nethereum-gen.multisettings at the project root, with paths containing properly formatted xxx.abi or yyy.json files from the compilation output of the extension (bin folder) or other tools like fondry (out folder)');
         outputChannel.appendLine(e.message);
         outputChannel.show();
     }
@@ -234,7 +233,6 @@ export function codeGenerateCQS(fileName: string, lang: number, args: any, diagn
             if(bytecode === undefined) {
                 bytecode = compilationOutput.bytecode;
             }
-            
         }
         if (abi !== undefined) {
 
@@ -269,7 +267,7 @@ export function codeGenerateCQS(fileName: string, lang: number, args: any, diagn
                 lang);
         }
     } catch (e) {
-        const outputChannel = vscode.window.createOutputChannel('solidity code generation');
+        const outputChannel = OutputChannelService.getInstance().getNethereumCodeGenerationOutputChannel();
         outputChannel.clear();
         outputChannel.appendLine('Error generating code:');
         outputChannel.appendLine(e.message);

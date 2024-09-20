@@ -8,6 +8,7 @@ import * as fsex from 'fs-extra';
 import * as https from 'https';
 import { SolcCompiler, compilerType, RemoteCompilerDownloader, RemoteReleases } from '../common/solcCompiler';
 import { errorsToDiagnostics } from './solErrorsToDiaganosticsClient';
+import { OutputChannelService } from './outputChannelService';
 
 
 export class Compiler {
@@ -17,7 +18,7 @@ export class Compiler {
 
     constructor(solcCachePath: string) {
         this.solcCachePath = solcCachePath;
-        this.outputChannel = vscode.window.createOutputChannel('Solidity compiler');
+        this.outputChannel = OutputChannelService.getInstance().getSolidityCompilerOutputChannel();
     }
 
     public outputCompilerInfoEnsuringInitialised() {
@@ -120,17 +121,19 @@ export class Compiler {
         overrideDefaultCompiler: compilerType = null): Promise<Array<string>> {
         // Did we find any sol files after all?
         if (Object.keys(contracts).length === 0) {
-            vscode.window.showWarningMessage('No solidity files (*.sol) found');
+            this.outputChannel.appendLine("No solidity files (*.sol) found")
             return;
-        }
+        }       
+        
+        var rootPath = workspaceUtil.getCurrentProjectInWorkspaceRootFsPath();
         return new Promise((resolve, reject) => {
             this.initialiseCompiler(overrideDefaultCompiler).then(() => {
                 try {
                     const output = this.solc.compile(JSON.stringify(contracts), overrideDefaultCompiler);
-                    resolve(this.processCompilationOutput(output, this.outputChannel, diagnosticCollection, buildDir,
-                        sourceDir, excludePath, singleContractFilePath));
+                    const files = this.processCompilationOutput(output, this.outputChannel, diagnosticCollection, buildDir, sourceDir, rootPath, excludePath, singleContractFilePath);
+                    resolve(files);
                 } catch (reason) {
-                    vscode.window.showWarningMessage(reason);
+                    this.outputChannel.appendLine("Error:" + reason)
                     reject(reason);
                 }
 
@@ -146,7 +149,6 @@ export class Compiler {
     }
 
     private outputCompilerInfo(overrideDefaultCompiler: compilerType = null) {
-        this.outputChannel.clear();
         this.outputChannel.show();
         this.outputChannel.appendLine('Retrieving compiler information:');
         const compiler = this.solc.getCompiler(overrideDefaultCompiler);
@@ -216,7 +218,7 @@ export class Compiler {
     }
 
     private processCompilationOutput(outputString: any, outputChannel: vscode.OutputChannel, diagnosticCollection: vscode.DiagnosticCollection,
-        buildDir: string, sourceDir: string, excludePath?: string[], singleContractFilePath?: string): Array<string> {
+        buildDir: string, sourceDir: string, rootPath: string, excludePath?: string[], singleContractFilePath?: string): Array<string> {
         const output = JSON.parse(outputString);
         if (Object.keys(output).length === 0) {
             const noOutputMessage = `No output by the compiler`;
@@ -241,19 +243,35 @@ export class Compiler {
                     vscode.window.showWarningMessage(`Compilation had ${errorWarningCounts.warnings} warnings`);
                 }
             } else if (errorWarningCounts.warnings > 0) {
-                const files = this.writeCompilationOutputToBuildDirectory(output, buildDir, sourceDir, excludePath, singleContractFilePath);
-                const compilationWithWarningsMessage = `Compilation completed successfully!, with ${errorWarningCounts.warnings} warnings`;
-                vscode.window.showWarningMessage(compilationWithWarningsMessage);
-                vscode.window.setStatusBarMessage(compilationWithWarningsMessage);
-                outputChannel.appendLine(compilationWithWarningsMessage);
+                const files = this.writeCompilationOutputToBuildDirectory(output, buildDir, sourceDir, rootPath, excludePath, singleContractFilePath);
+                if(files.length === 0) {
+                    const noOutputMessage = `Could not output any files from the compilation, compilation warnings: ${errorWarningCounts.warnings} warnings`;
+                    vscode.window.showWarningMessage(noOutputMessage);
+                    vscode.window.setStatusBarMessage(noOutputMessage);
+                    outputChannel.appendLine(noOutputMessage);
+                    return files;
+                } else {
+                    const compilationWithWarningsMessage = `Compilation completed successfully!, with ${errorWarningCounts.warnings} warnings`;
+                    vscode.window.showWarningMessage(compilationWithWarningsMessage);
+                    vscode.window.setStatusBarMessage(compilationWithWarningsMessage);
+                    outputChannel.appendLine(compilationWithWarningsMessage);
+                }
                 return files;
             }
         } else {
-            const files = this.writeCompilationOutputToBuildDirectory(output, buildDir, sourceDir, excludePath, singleContractFilePath);
-            const compilationSuccessMessage = `Compilation completed successfully!`;
-            vscode.window.showInformationMessage(compilationSuccessMessage);
-            vscode.window.setStatusBarMessage(compilationSuccessMessage);
-            outputChannel.appendLine(compilationSuccessMessage);
+            const files = this.writeCompilationOutputToBuildDirectory(output, buildDir, sourceDir, rootPath, excludePath, singleContractFilePath);
+            if(files.length === 0) {
+                const noOutputMessage = `Could not output any files from the compilation`;
+                vscode.window.showWarningMessage(noOutputMessage);
+                vscode.window.setStatusBarMessage(noOutputMessage);
+                outputChannel.appendLine(noOutputMessage);
+                return files;
+            }else{
+                const compilationSuccessMessage = `Compilation completed successfully!`;
+                vscode.window.showInformationMessage(compilationSuccessMessage);
+                vscode.window.setStatusBarMessage(compilationSuccessMessage);
+                outputChannel.appendLine(compilationSuccessMessage);
+            }
             return files;
         }
     }
@@ -267,11 +285,15 @@ export class Compiler {
         fs.mkdirSync(dirname);
     }
 
-    private writeCompilationOutputToBuildDirectory(output: any, buildDir: string, sourceDir: string,
+    private writeCompilationOutputToBuildDirectory(output: any, buildDir: string, sourceDir: string, rootPath: string,
         excludePath?: string[], singleContractFilePath?: string): Array<string> {
-        const rootPath = workspaceUtil.getCurrentProjectInWorkspaceRootFsPath();
-        const binPath = path.join(rootPath, buildDir);
         const compiledFiles: Array<string> = new Array<string>();
+        if(rootPath == null) {
+            this.outputChannel.appendLine('No root path found');
+            return compiledFiles;
+        }
+        const binPath = path.join(rootPath, buildDir);
+       
 
         if (!fs.existsSync(binPath)) {
             fs.mkdirSync(binPath);
