@@ -1,5 +1,5 @@
 {
-  "name": "solidity",
+  "name": "seismic-solidity",
   "description": "Ethereum Solidity Language for Visual Studio Code",
   "keywords": [
     "solidity",
@@ -11,7 +11,7 @@
     "solhint"
   ],
   "version": "0.0.176",
-  "publisher": "JuanBlanco",
+  "publisher": "SeismicSystems",
   "license": "MIT",
   "engines": {
     "vscode": "^1.77.0"
@@ -24,12 +24,12 @@
     "Juan Blanco"
   ],
   "bugs": {
-    "url": "https://github.com/juanfranblanco/vscode-solidity/issues"
+    "url": "https://github.com/SeismicSystems/seismic-vscode-solidity/issues"
   },
   "icon": "images/icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/juanfranblanco/vscode-solidity"
+    "url": "https://github.com/SeismicSystems/seismic-vscode-solidity"
   },
   "categories": [
     "Programming Languages",
@@ -71,7 +71,6 @@
   "devDependencies": {
     "@types/node": "^11.15.3",
     "@types/vscode": "^1.77.0",
-    
     "ts-node": "^7.0.1",
     "tslint": "^5.20.1",
     "tsup": "^7.1.0",
@@ -214,7 +213,11 @@
             "string",
             "string[]"
           ],
-          "default": ["src", "contracts", ""],
+          "default": [
+            "src",
+            "contracts",
+            ""
+          ],
           "description": "Default directory where the Package Dependency store its contracts, i.e: 'src', 'contracts', or just a blank string '', this is used to avoid typing imports with subfolder paths"
         },
         "solidity.remappings": {
@@ -236,7 +239,7 @@
           "type": "string",
           "default": "YourApiKey",
           "description": "Api key for downloading ethereum smart contracts from etherscan.io"
-        },       
+        },
         "solidity.explorer_etherscan_optimism_apikey": {
           "type": "string",
           "default": "YourApiKey",
@@ -270,9 +273,14 @@
         "id": "solidity-markdown-injection"
       },
       {
-          "id": "json", 
-          "aliases": ["JSON", "json"],
-          "extensions": [".nethereum-gen.multisettings"]
+        "id": "json",
+        "aliases": [
+          "JSON",
+          "json"
+        ],
+        "extensions": [
+          ".nethereum-gen.multisettings"
+        ]
       }
     ],
     "configurationDefaults": {
@@ -591,7 +599,8 @@
           "when": "explorerResourceIsFolder || resourceExtname == .sol || resourceExtname == .abi",
           "command": "solidity.downloadVerifiedSmartContractEtherscan",
           "group": "2_solidity"
-        },{
+        },
+        {
           "when": "resourceFilename =~ /^(.*\\.)?nethereum-gen\\.multisettings$/",
           "command": "solidity.codeGenFromNethereumGenAbisFile",
           "group": "3_solidity"
@@ -635,12 +644,12 @@
         "scopeName": "markdown.solidity.codeblock",
         "path": "./syntaxes/solidity-markdown-injection.json",
         "injectTo": [
-            "text.html.markdown"
+          "text.html.markdown"
         ],
         "embeddedLanguages": {
-            "meta.embedded.block.solidity": "solidity"
+          "meta.embedded.block.solidity": "solidity"
         }
-    }
+      }
     ]
   }
 }
