@@ -123,7 +123,7 @@
         },
         "solidity.compileUsingLocalVersion": {
           "type": "string",
-          "default": "/Users/ameya/Desktop/Seismic/seismic-vscode-solidity/assets/soljson-latest.js",
+          "default": "",
           "description": "Compile using a local solc (js) binary file, please include the path of the file if wanted: 'C://v0.4.3+commit.2353da71.js'"
         },
         "solidity.defaultCompiler": {
@@ -135,7 +135,7 @@
             "localNodeModule",
             "embedded"
           ],
-          "default": "localFile"
+          "default": "remote"
         },
         "solidity.linter": {
           "type": "string",
