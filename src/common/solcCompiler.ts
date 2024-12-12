@@ -195,7 +195,7 @@ export class LocalPathCompilerLoader extends SolcCompilerLoader {
 export class RemoteCompilerDownloader {
      public downloadCompilationFile(version: string, savePath: string): Promise<void> {
         const file = fs.createWriteStream(savePath);
-        const url = 'https://binaries.soliditylang.org/bin/soljson-' + version + '.js';
+        const url = 'https://seismicsystems.github.io/solc-bin/bin/soljson-' + version + '.js';
         return new Promise((resolve, reject) => {
                 const request = https.get(url, function (response) {
                         if (response.statusCode !== 200) {
@@ -218,7 +218,7 @@ export class RemoteCompilerDownloader {
 
 export class RemoteReleases {
     public getSolcReleases(): Promise<any> {
-        const url = 'https://binaries.soliditylang.org/bin/list.json';
+        const url = 'https://seismicsystems.github.io/solc-bin/bin/list.json';
         return new Promise((resolve, reject) => {
             https.get(url, (res) => {
                 let body = '';
