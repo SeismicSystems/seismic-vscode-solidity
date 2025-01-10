@@ -40,22 +40,27 @@ To generate the `.vsix` file from the extension source code:
 2. Install the `vsce` tool globally using npm:
    ```sh
    npm install -g @vscode/vsce
+   ```
 3. Install
 3. Clone the repository for the Seismic extension:
    ```sh
    git clone https://github.com/SeismicSystems/seismic-vscode-extension.cd seismic-vscode-extension
+   ```
 4. Install dependencies:
    ```sh
    npm install
+   ```
 5. Package the extension into a .vsix file:
    ```sh
    vsce package
+   ```
+   This will create a file named something like `seismic-vscode-extension-0.1.0.vsix` in the current directory.
 
-This will create a file named something like `seismic-vscode-extension-0.1.0.vsix` in the current directory.
 6. Install the `.vsix` File in VSCode:
    ```sh
    code --install-extension seismic-vscode-extension-0.1.0.vsix
-Replace `seismic-vscode-extension-0.1.0.vsix `with the actual filename of the .vsix file generated.
+   ```
+Replace `seismic-vscode-extension-0.1.0.vsix` with the actual filename of the .vsix file generated.
 
 7. Verify installation
   ```sh
