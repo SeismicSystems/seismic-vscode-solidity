@@ -78,7 +78,7 @@ This extension is designed for developers actively working with Seismic-based to
    Experiment with the available features and workflows to provide valuable feedback to the team.
 
 ## Contributing and Support
-Since this is a highly experimental extension, code contributions are currently limited to core Seismic team members. However, we are constantly looking for high-quality feedback from developers. Please send any and all feedback via the following channels:
+Since this is a highly experimental extension, code contributions are currently limited to core Seismic team members. However, we are constantly looking for high-quality feedback from developers via the following channels:
 - Telegram: [@lyronctk](https://t.me/lyronctk)
 - Email: [l@seismic.systems](mailto:l@seismic.systems)
 
