@@ -56,9 +56,11 @@ This will create a file named something like `seismic-vscode-extension-0.1.0.vsi
    ```sh
    code --install-extension seismic-vscode-extension-0.1.0.vsix
 Replace `seismic-vscode-extension-0.1.0.vsix `with the actual filename of the .vsix file generated.
+
 7. Verify installation
   ```sh
   code --list-extensions
+  ```
 
 ## Usage Instructions
 This extension is designed for developers actively working with Seismic-based tools or contributing to the Seismic ecosystem. To get started after installation,
