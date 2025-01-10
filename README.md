@@ -38,12 +38,13 @@ To generate the `.vsix` file from the extension source code:
 1. Ensure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed on your system.
 
 2. Clone the repository for the Seismic extension:
+  If you have access via the Github PAT:
    ```sh
    git clone https://github.com/SeismicSystems/seismic-vscode-extension.git
    cd seismic-vscode-extension
    ```
-   if you have access via the Github PAT
    or 
+   If you have access via SSH:
    ```sh
    git clone git@github.com/SeismicSystems/seismic-vscode-extension.git
    cd seismic-vscode-extension
