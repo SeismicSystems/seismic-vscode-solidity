@@ -1,6 +1,6 @@
 {
   "name": "seismic-solidity",
-  "description": "Ethereum Solidity Language for Visual Studio Code",
+  "description": "Seismic extension for Visual Studio Code",
   "keywords": [
       "seismic"
   ],
