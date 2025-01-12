@@ -5,7 +5,7 @@
       "seismic"
   ],
   "version": "0.0.176",
-  "publisher": "SeismicSystems",
+  "publisher": "SeismicSys",
   "license": "MIT",
   "engines": {
     "vscode": "^1.77.0"
