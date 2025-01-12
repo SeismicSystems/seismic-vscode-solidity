@@ -1,17 +1,11 @@
 {
   "name": "seismic-solidity",
-  "description": "Ethereum Solidity Language for Visual Studio Code",
+  "description": "Seismic extension for Visual Studio Code",
   "keywords": [
-    "solidity",
-    "ethereum",
-    "blockchain",
-    "compiler",
-    "solium",
-    "nethereum",
-    "solhint"
+      "seismic"
   ],
   "version": "0.0.176",
-  "publisher": "SeismicSystems",
+  "publisher": "SeismicSys",
   "license": "MIT",
   "engines": {
     "vscode": "^1.77.0"
@@ -21,12 +15,12 @@
   ],
   "activationEvents": [],
   "contributors": [
-    "Juan Blanco"
+    "Seismic core team"
   ],
   "bugs": {
     "url": "https://github.com/SeismicSystems/seismic-vscode-solidity/issues"
   },
-  "icon": "images/icon.png",
+  "icon": "images/seismic-logo.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/SeismicSystems/seismic-vscode-solidity"
