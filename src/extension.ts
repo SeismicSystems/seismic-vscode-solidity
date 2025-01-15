@@ -230,8 +230,8 @@ export async function activate(context: vscode.ExtensionContext) {
 
     if (ws) {
         clientDisposable = new LanguageClient(
-            'seismic',
-            'Seismic Language Server',
+            'solidity',
+            'Solidity Language Server',
             serverOptions,
             clientOptions).start();
     }
