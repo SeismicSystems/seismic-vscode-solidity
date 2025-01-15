@@ -31,7 +31,7 @@ export class Compiler {
             // tslint:disable-next-line:max-line-length
             const compilers: string[] = [compilerType[compilerType.remote], compilerType[compilerType.localFile], compilerType[compilerType.localNodeModule], compilerType[compilerType.embedded]];
             const selectedCompiler: string = await vscode.window.showQuickPick(compilers);
-            vscode.workspace.getConfiguration('solidity').update('defaultCompiler', selectedCompiler, target);
+            vscode.workspace.getConfiguration('seismic').update('defaultCompiler', selectedCompiler, target);
             vscode.window.showInformationMessage('Compiler changed to: ' + selectedCompiler);
         } catch (e) {
             vscode.window.showErrorMessage('Error changing default compiler: ' + e);
@@ -40,7 +40,7 @@ export class Compiler {
 
     public async downloadRemoteVersionAndSetLocalPathSetting(target: vscode.ConfigurationTarget, folderPath: string) {
         const downloadPath = await this.downloadRemoteVersion(folderPath);
-        vscode.workspace.getConfiguration('solidity').update('compileUsingLocalVersion', downloadPath, target);
+        vscode.workspace.getConfiguration('seismic').update('compileUsingLocalVersion', downloadPath, target);
     }
 
     public async downloadRemoteVersion(folderPath: string): Promise<string> {
@@ -89,7 +89,7 @@ export class Compiler {
                     }
                 }
             }
-            vscode.workspace.getConfiguration('solidity').update('compileUsingRemoteVersion', updateValue, target);
+            vscode.workspace.getConfiguration('seismic').update('compileUsingRemoteVersion', updateValue, target);
         });
     }
 
@@ -179,10 +179,10 @@ export class Compiler {
         this.outputChannel.appendLine(this.solcCachePath);
         this.outputChannel.clear();
         this.outputChannel.show();
-        const remoteCompiler = vscode.workspace.getConfiguration('solidity').get<string>('compileUsingRemoteVersion');
-        const localCompiler = vscode.workspace.getConfiguration('solidity').get<string>('compileUsingLocalVersion');
-        const nodeModulePackage = vscode.workspace.getConfiguration('solidity').get<string>('nodemodulespackage');
-        const compilerSetting = vscode.workspace.getConfiguration('solidity').get<string>('defaultCompiler');
+        const remoteCompiler = vscode.workspace.getConfiguration('seismic').get<string>('compileUsingRemoteVersion');
+        const localCompiler = vscode.workspace.getConfiguration('seismic').get<string>('compileUsingLocalVersion');
+        const nodeModulePackage = vscode.workspace.getConfiguration('seismic').get<string>('nodemodulespackage');
+        const compilerSetting = vscode.workspace.getConfiguration('seismic').get<string>('defaultCompiler');
         const defaultCompiler = compilerType[compilerSetting];
         this.outputChannel.appendLine('Initialising compiler with settings:');
         this.outputChannel.appendLine('Remote compiler: ' + remoteCompiler);

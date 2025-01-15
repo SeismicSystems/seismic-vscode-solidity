@@ -30,7 +30,7 @@ let compiler: Compiler;
 
 export async function activate(context: vscode.ExtensionContext) {
     const ws = workspace.workspaceFolders;
-    diagnosticCollection = vscode.languages.createDiagnosticCollection('solidity');
+    diagnosticCollection = vscode.languages.createDiagnosticCollection('seismic');
     compiler = new Compiler(context.extensionPath);
 
     context.subscriptions.push(diagnosticCollection);
@@ -171,27 +171,27 @@ export async function activate(context: vscode.ExtensionContext) {
     }));
 
     context.subscriptions.push(
-        vscode.languages.registerDocumentFormattingEditProvider('solidity', {
+        vscode.languages.registerDocumentFormattingEditProvider('seismic', {
             async provideDocumentFormattingEdits(document: vscode.TextDocument): Promise<vscode.TextEdit[]> {
                 return await formatDocument(document, context);
             },
         }));
 
     context.subscriptions.push(
-        vscode.languages.registerCodeActionsProvider('solidity', new AddressChecksumCodeActionProvider(), {
+        vscode.languages.registerCodeActionsProvider('seismic', new AddressChecksumCodeActionProvider(), {
             providedCodeActionKinds: AddressChecksumCodeActionProvider.providedCodeActionKinds,
         }),
     );
 
     context.subscriptions.push(
-        vscode.languages.registerCodeActionsProvider('solidity', new SPDXCodeActionProvider(), {
+        vscode.languages.registerCodeActionsProvider('seismic', new SPDXCodeActionProvider(), {
             providedCodeActionKinds: SPDXCodeActionProvider.providedCodeActionKinds,
         }),
     );
 
 
     context.subscriptions.push(
-        vscode.languages.registerCodeActionsProvider('solidity', new ChangeCompilerVersionActionProvider(), {
+        vscode.languages.registerCodeActionsProvider('seismic', new ChangeCompilerVersionActionProvider(), {
             providedCodeActionKinds: ChangeCompilerVersionActionProvider.providedCodeActionKinds,
         }),
     );
@@ -219,7 +219,7 @@ export async function activate(context: vscode.ExtensionContext) {
         revealOutputChannelOn: RevealOutputChannelOn.Never,
         synchronize: {
             // Synchronize the setting section 'solidity' to the server
-            configurationSection: 'solidity',
+            configurationSection: 'seismic',
             // Notify the server about file changes to '.sol.js files contain in the workspace (TODO node, linter)
             fileEvents: vscode.workspace.createFileSystemWatcher('{**/remappings.txt,**/.solhint.json,**/.soliumrc.json,**/brownie-config.yaml}'),
         },
@@ -230,8 +230,8 @@ export async function activate(context: vscode.ExtensionContext) {
 
     if (ws) {
         clientDisposable = new LanguageClient(
-            'solidity',
-            'Solidity Language Server',
+            'seismic',
+            'Seismic Language Server',
             serverOptions,
             clientOptions).start();
     }
