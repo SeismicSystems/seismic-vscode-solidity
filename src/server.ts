@@ -61,8 +61,8 @@ const defaultSeismicSoliditySettings = {} as SeismicSoliditySettings;
 Object.entries(packageJson.contributes.configuration.properties)
     .forEach(([key, value]) => {
         const keys = key.split('.');
-        if (keys.length === 3 && keys[0] === 'seismic' && keys[1] === 'solidity') {
-            defaultSeismicSoliditySettings[keys[2]] = value.default;
+        if (keys.length === 2 && keys[0] === 'seismic') {
+            defaultSeismicSoliditySettings[keys[1]] = value.default;
         }
     });
 
