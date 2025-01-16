@@ -478,11 +478,11 @@ connection.onDidChangeConfiguration((change) => {
     if (standAloneServerSide) {
         updateSoliditySettings({
             ...defaultSeismicSoliditySettings,
-            ...(change.settings?.solidity || {}),
+            ...(change.settings?.seismic || {}),
         });
     } else {
         updateSoliditySettings(
-            change.settings?.solidity,
+            change.settings?.seismic,
         );
 
     }
