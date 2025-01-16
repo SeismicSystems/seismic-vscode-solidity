@@ -250,10 +250,10 @@
     },
     "languages": [
       {
-        "id": "solidity",
+        "id": "seismic-solidity",
         "aliases": [
-          "Solidity",
-          "solidity"
+          "Seismic Solidity",
+          "seismic-solidity"
         ],
         "extensions": [
           ".sol"
@@ -425,87 +425,87 @@
       ],
       "editor/context": [
         {
-          "when": "editorLangId == 'solidity'",
+          "when": "editorLangId == 'seismic-solidity'",
           "command": "seismic.compile.active",
           "group": "1_solidity"
         },
         {
-          "when": "editorLangId == 'solidity'",
+          "when": "editorLangId == 'seismic-solidity'",
           "command": "seismic.compile",
           "group": "1_solidity"
         },
         {
-          "when": "editorLangId == 'solidity'",
+          "when": "editorLangId == 'seismic-solidity'",
           "command": "seismic.compilerInfo",
           "group": "1_solidity"
         },
         {
-          "when": "editorLangId == 'solidity'",
+          "when": "editorLangId == 'seismic-solidity'",
           "command": "seismic.compile.activeUsingRemote",
           "group": "1_solidity"
         },
         {
-          "when": "editorLangId == 'solidity'",
+          "when": "editorLangId == 'seismic-solidity'",
           "command": "seismic.compile.activeUsingLocalFile",
           "group": "1_solidity"
         },
         {
-          "when": "editorLangId == 'solidity'",
+          "when": "editorLangId == 'seismic-solidity'",
           "command": "seismic.compile.activeUsingNodeModule",
           "group": "1_solidity"
         },
         {
-          "when": "editorLangId == 'solidity'",
+          "when": "editorLangId == 'seismic-solidity'",
           "command": "seismic.downloadVerifiedSmartContractEtherscan",
           "group": "1_solidity"
         },
         {
-          "when": "editorLangId == 'solidity'",
+          "when": "editorLangId == 'seismic-solidity'",
           "command": "seismic.changeDefaultCompilerType",
           "group": "2_solidity"
         },
         {
-          "when": "editorLangId == 'solidity'",
+          "when": "editorLangId == 'seismic-solidity'",
           "command": "seismic.solcReleases",
           "group": "2_solidity"
         },
         {
-          "when": "editorLangId == 'solidity'",
+          "when": "editorLangId == 'seismic-solidity'",
           "command": "seismic.selectGlobalRemoteSolcVersion",
           "group": "2_solidity"
         },
         {
-          "when": "editorLangId == 'solidity'",
+          "when": "editorLangId == 'seismic-solidity'",
           "command": "seismic.selectWorkspaceRemoteSolcVersion",
           "group": "2_solidity"
         },
         {
-          "when": "editorLangId == 'solidity'",
+          "when": "editorLangId == 'seismic-solidity'",
           "command": "seismic.downloadRemoteSolcVersion",
           "group": "2_solidity"
         },
         {
-          "when": "editorLangId == 'solidity'",
+          "when": "editorLangId == 'seismic-solidity'",
           "command": "seismic.downloadRemoteVersionAndSetLocalPathSetting",
           "group": "2_solidity"
         },
         {
-          "when": "editorLangId == 'solidity'",
+          "when": "editorLangId == 'seismic-solidity'",
           "command": "seismic.codegenNethereumCodeGenSettings",
           "group": "3_solidity"
         },
         {
-          "when": "editorLangId == 'solidity'",
+          "when": "editorLangId == 'seismic-solidity'",
           "command": "seismic.compileAndCodegenCSharpProject",
           "group": "3_solidity"
         },
         {
-          "when": "editorLangId == 'solidity'",
+          "when": "editorLangId == 'seismic-solidity'",
           "command": "seismic.compileAndCodegenVbNetProject",
           "group": "3_solidity"
         },
         {
-          "when": "editorLangId == 'solidity'",
+          "when": "editorLangId == 'seismic-solidity'",
           "command": "seismic.compileAndCodegenFSharpProject",
           "group": "3_solidity"
         },
@@ -603,24 +603,24 @@
         "command": "seismic.compile.active",
         "key": "f5",
         "mac": "f5",
-        "when": "editorTextFocus && editorLangId == 'solidity'"
+        "when": "editorTextFocus && editorLangId == 'seismic-solidity'"
       },
       {
         "command": "seismic.compile",
         "key": "Ctrl+f5",
         "mac": "Cmd+f5",
-        "when": "editorTextFocus && editorLangId == 'solidity'"
+        "when": "editorTextFocus && editorLangId == 'seismic-solidity'"
       }
     ],
     "snippets": [
       {
-        "language": "solidity",
+        "language": "seismic-solidity",
         "path": "./snippets/solidity.json"
       }
     ],
     "grammars": [
       {
-        "language": "solidity",
+        "language": "seismic-solidity",
         "scopeName": "source.solidity",
         "path": "./syntaxes/solidity.json",
         "balancedBracketScopes": [
