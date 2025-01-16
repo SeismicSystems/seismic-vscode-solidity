@@ -102,7 +102,7 @@
           "default": 200,
           "description": "Optimize for how many times you intend to run the code. Lower values will optimize more for initial deployment cost, higher values will optimize more for high-frequency usage."
         },
-        "seismic-solidity.evmVersion": {
+        "seismic.solidity.evmVersion": {
           "type": "string",
           "default": "",
           "description": "Evm version, ie london, istanbul, petersburg, constantinople, byzantium, tangerineWhistle, spuriousDragon, homestead, frontier, or leave it blank for the default evm version"
