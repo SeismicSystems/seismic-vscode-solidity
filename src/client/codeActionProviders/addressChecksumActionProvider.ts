@@ -43,7 +43,6 @@ export class AddressChecksumCodeActionProvider implements vscode.CodeActionProvi
 
     }
 
-
     export class ChangeCompilerVersionActionProvider implements vscode.CodeActionProvider {
 
 
