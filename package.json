@@ -250,7 +250,7 @@
     },
     "languages": [
       {
-        "id": "solidity",
+        "id": "seismic",
         "aliases": [
           "Solidity",
           "solidity"
