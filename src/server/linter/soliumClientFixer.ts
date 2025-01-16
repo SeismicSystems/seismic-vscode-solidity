@@ -4,9 +4,9 @@ import * as vscode from 'vscode';
 import * as workspaceUtil from '../../client/workspaceUtil';
 
 export function lintAndfixCurrentDocument() {
-    const linterType = vscode.workspace.getConfiguration('solidity').get<string>('linter');
+    const linterType = vscode.workspace.getConfiguration('seismic').get<string>('linter');
     if (linterType === 'solium') {
-        const soliumRules = vscode.workspace.getConfiguration('solidity').get<string>('soliumRules');
+        const soliumRules = vscode.workspace.getConfiguration('seismic').get<string>('soliumRules');
         const linter = new SoliumService(
             workspaceUtil.getCurrentProjectInWorkspaceRootFsPath(), soliumRules, null);
         const editor = vscode.window.activeTextEditor;
