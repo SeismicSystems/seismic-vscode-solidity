@@ -2,7 +2,7 @@
   "name": "seismic",
   "description": "Seismic extension for Visual Studio Code",
   "keywords": [
-      "seismic"
+    "seismic"
   ],
   "version": "0.0.179",
   "publisher": "SeismicSys",
@@ -300,7 +300,7 @@
         "title": "Seismic: Compile with configured Node module"
       },
       {
-        "command": "seismic.compile", 
+        "command": "seismic.compile",
         "title": "Seismic: Compile All"
       },
       {
