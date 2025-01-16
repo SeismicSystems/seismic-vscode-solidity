@@ -4,7 +4,7 @@
   "keywords": [
       "seismic"
   ],
-  "version": "0.0.178",
+  "version": "0.0.179",
   "publisher": "SeismicSys",
   "license": "MIT",
   "engines": {
@@ -85,7 +85,7 @@
   "contributes": {
     "configuration": {
       "type": "object",
-      "title": "Solidity configuration",
+      "title": "Seismic configuration",
       "properties": {
         "solidity.nodemodulespackage": {
           "type": "string",
@@ -97,7 +97,7 @@
           "default": "latest",
           "description": "Configuration to download a 'remote' solc (js) version binary file from 'https://seismicsystems.github.io/solc-bin', for example: 'latest' will always use the latest version, or a specific version like: 'v0.4.3+commit.2353da71', use the command 'Solidity: Get solidity releases' to list all versions available, or just right click in a solidity file and select either `Solidity: Change global compiler version (Remote)` or `Solidity: Change workspace compiler version (Remote)` to use the wizard to set the correct version or setting for either the current workspace or globally"
         },
-        "solidity.compilerOptimization": {
+        "seismic.compilerOptimization": {
           "type": "number",
           "default": 200,
           "description": "Optimize for how many times you intend to run the code. Lower values will optimize more for initial deployment cost, higher values will optimize more for high-frequency usage."
@@ -285,115 +285,115 @@
     "commands": [
       {
         "command": "solidity.compile.active",
-        "title": "Solidity: Compile Contract"
+        "title": "Seismic: Compile Contract"
       },
       {
         "command": "solidity.compile.activeUsingRemote",
-        "title": "Solidity: Compile with configured Remote version"
+        "title": "Seismic: Compile with configured Remote version"
       },
       {
         "command": "solidity.compile.activeUsingLocalFile",
-        "title": "Solidity: Compile with configured Local solc file"
+        "title": "Seismic: Compile with configured Local solc file"
       },
       {
         "command": "solidity.compile.activeUsingNodeModule",
-        "title": "Solidity: Compile with configured Node module"
+        "title": "Seismic: Compile with configured Node module"
       },
       {
         "command": "solidity.compile",
-        "title": "Solidity: Compile All"
+        "title": "Seismic: Compile All"
       },
       {
         "command": "solidity.compilerInfo",
-        "title": "Solidity: Compiler Information"
+        "title": "Seismic: Compiler Information"
       },
       {
         "command": "solidity.solcReleases",
-        "title": "Solidity: Get solidity releases"
+        "title": "Seismic: Get solidity releases"
       },
       {
         "command": "solidity.codegenNethereumCodeGenSettings",
-        "title": "Solidity: Create 'nethereum-gen.settings' with default values at root"
+        "title": "Seismic: Create 'nethereum-gen.settings' with default values at root"
       },
       {
         "command": "solidity.codegenCSharpProject",
-        "title": "Solidity: Code generate CSharp contract definition"
+        "title": "Seismic: Code generate CSharp contract definition"
       },
       {
         "command": "solidity.compileAndCodegenCSharpProject",
-        "title": "Solidity: Compile and Code generate CSharp contract definition"
+        "title": "Seismic: Compile and Code generate CSharp contract definition"
       },
       {
         "command": "solidity.codegenVbNetProject",
-        "title": "Solidity: Code generate VB.Net contract definition"
+        "title": "Seismic: Code generate VB.Net contract definition"
       },
       {
         "command": "solidity.compileAndCodegenVbNetProject",
-        "title": "Solidity: Compile and Code generate VB.Net contract definition"
+        "title": "Seismic: Compile and Code generate VB.Net contract definition"
       },
       {
         "command": "solidity.codegenFSharpProject",
-        "title": "Solidity: Code generate FSharp contract definition"
+        "title": "Seismic: Code generate FSharp contract definition"
       },
       {
         "command": "solidity.compileAndCodegenFSharpProject",
-        "title": "Solidity: Compile and Code generate FSharp contract definition"
+        "title": "Seismic: Compile and Code generate FSharp contract definition"
       },
       {
         "command": "solidity.codegenCSharpProjectAll",
-        "title": "Solidity: Code generate CSharp Project from all compiled files"
+        "title": "Seismic: Code generate CSharp Project from all compiled files"
       },
       {
         "command": "solidity.codegenVbNetProjectAll",
-        "title": "Solidity: Code generate VB.Net Project from all compiled files"
+        "title": "Seismic: Code generate VB.Net Project from all compiled files"
       },
       {
         "command": "solidity.codegenFSharpProjectAll",
-        "title": "Solidity: Code generate FSharp Project from all compiled files"
+        "title": "Seismic: Code generate FSharp Project from all compiled files"
       },
       {
         "command": "solidity.codegenCSharpProjectAllAbiCurrent",
-        "title": "Solidity: Code generate CSharp Definitions for Abi files in current folder"
+        "title": "Seismic: Code generate CSharp Definitions for Abi files in current folder"
       },
       {
         "command": "solidity.codegenVbNetProjectAllAbiCurrent",
-        "title": "Solidity: Code generate VB.Net Definitions for Abi files in current folder"
+        "title": "Seismic: Code generate VB.Net Definitions for Abi files in current folder"
       },
       {
         "command": "solidity.codegenFSharpProjectAllAbiCurrent",
-        "title": "Solidity: Code generate FSharp Definitions for Abi files in current folder"
+        "title": "Seismic: Code generate FSharp Definitions for Abi files in current folder"
       },
       {
         "command": "solidity.codeGenFromNethereumGenAbisFile",
-        "title": "Solidity: Code generate Definitions for Abi files in selected 'nethereum-gen.multisettings'"
+        "title": "Seismic: Code generate Definitions for Abi files in selected 'nethereum-gen.multisettings'"
       },
       {
         "command": "solidity.fixDocument",
-        "title": "Solidity: Fix document rules using Solium"
+        "title": "Seismic: Fix document rules using Solium"
       },
       {
         "command": "solidity.selectWorkspaceRemoteSolcVersion",
-        "title": "Solidity: Change workspace compiler version (Remote)"
+        "title": "Seismic: Change workspace compiler version (Remote)"
       },
       {
         "command": "solidity.selectGlobalRemoteSolcVersion",
-        "title": "Solidity: Change global compiler version (Remote)"
+        "title": "Seismic: Change global compiler version (Remote)"
       },
       {
         "command": "solidity.downloadRemoteSolcVersion",
-        "title": "Solidity: Download compiler"
+        "title": "Seismic: Download compiler"
       },
       {
         "command": "solidity.downloadRemoteVersionAndSetLocalPathSetting",
-        "title": "Solidity: Download compiler and set workspace local Path"
+        "title": "Seismic: Download compiler and set workspace local Path"
       },
       {
         "command": "solidity.changeDefaultCompilerType",
-        "title": "Solidity: Change the default workspace compiler to Remote, Local, NodeModule, Embedded"
+        "title": "Seismic: Change the default workspace compiler to Remote, Local, NodeModule, Embedded"
       },
       {
         "command": "solidity.downloadVerifiedSmartContractEtherscan",
-        "title": "Solidity: Download smart contract source code / abi (Etherscan)"
+        "title": "Seismic: Download smart contract source code / abi (Etherscan)"
       }
     ],
     "menus": {
