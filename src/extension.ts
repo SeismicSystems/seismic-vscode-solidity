@@ -30,143 +30,143 @@ let compiler: Compiler;
 
 export async function activate(context: vscode.ExtensionContext) {
     const ws = workspace.workspaceFolders;
-    diagnosticCollection = vscode.languages.createDiagnosticCollection('solidity');
+    diagnosticCollection = vscode.languages.createDiagnosticCollection('seismic');
     compiler = new Compiler(context.extensionPath);
 
     context.subscriptions.push(diagnosticCollection);
 
     initDiagnosticCollection(diagnosticCollection);
     
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.compile.active', async () => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.compile.active', async () => {
         const compiledResults = await compileActiveContract(compiler);
         autoCodeGenerateAfterCompilation(compiledResults, null, diagnosticCollection);
         return compiledResults;
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.compile.activeUsingRemote', async () => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.compile.activeUsingRemote', async () => {
         const compiledResults = await compileActiveContract(compiler, compilerType.remote);
         autoCodeGenerateAfterCompilation(compiledResults, null, diagnosticCollection);
         return compiledResults;
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.compile.activeUsingLocalFile', async () => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.compile.activeUsingLocalFile', async () => {
         const compiledResults = await compileActiveContract(compiler, compilerType.localFile);
         autoCodeGenerateAfterCompilation(compiledResults, null, diagnosticCollection);
         return compiledResults;
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.compile.activeUsingNodeModule', async () => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.compile.activeUsingNodeModule', async () => {
         const compiledResults = await compileActiveContract(compiler, compilerType.localNodeModule);
         autoCodeGenerateAfterCompilation(compiledResults, null, diagnosticCollection);
         return compiledResults;
     }));
 
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.compile', () => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.compile', () => {
         compileAllContracts(compiler, diagnosticCollection);
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.codegenCSharpProject', (args: any[]) => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.codegenCSharpProject', (args: any[]) => {
         codeGenerateNethereumCQSCsharp(args, diagnosticCollection);
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.compileAndCodegenCSharpProject', async (args: any[]) => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.compileAndCodegenCSharpProject', async (args: any[]) => {
         const compiledResults = await compileActiveContract(compiler);
         compiledResults.forEach(file => {
             codeGenerateCQS(file, 0, args, diagnosticCollection);
         });
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.codegenNethereumCodeGenSettings', (args: any[]) => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.codegenNethereumCodeGenSettings', (args: any[]) => {
         generateNethereumCodeSettingsFile();
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.codegenVbNetProject', (args: any[]) => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.codegenVbNetProject', (args: any[]) => {
         codeGenerateNethereumCQSVbNet(args, diagnosticCollection);
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.compileAndCodegenVbNetProject', async (args: any[]) => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.compileAndCodegenVbNetProject', async (args: any[]) => {
         const compiledResults = await compileActiveContract(compiler);
         compiledResults.forEach(file => {
             codeGenerateCQS(file, 1, args, diagnosticCollection);
         });
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.codegenFSharpProject', (args: any[]) => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.codegenFSharpProject', (args: any[]) => {
         codeGenerateNethereumCQSFSharp(args, diagnosticCollection);
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.compileAndCodegenFSharpProject', async (args: any[]) => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.compileAndCodegenFSharpProject', async (args: any[]) => {
         const compiledResults = await compileActiveContract(compiler);
         compiledResults.forEach(file => {
             codeGenerateCQS(file, 3, args, diagnosticCollection);
         });
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.codegenCSharpProjectAll', (args: any[]) => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.codegenCSharpProjectAll', (args: any[]) => {
         codeGenerateNethereumCQSCSharpAll(args, diagnosticCollection);
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.codegenVbNetProjectAll', (args: any[]) => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.codegenVbNetProjectAll', (args: any[]) => {
         codeGenerateNethereumCQSVbAll(args, diagnosticCollection);
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.codegenFSharpProjectAll', (args: any[]) => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.codegenFSharpProjectAll', (args: any[]) => {
         codeGenerateNethereumCQSFSharpAll(args, diagnosticCollection);
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.codegenCSharpProjectAllAbiCurrent', (args: any[]) => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.codegenCSharpProjectAllAbiCurrent', (args: any[]) => {
         codeGenerateAllFilesFromAbiInCurrentFolder(0, args, diagnosticCollection);
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.codegenVbNetProjectAllAbiCurrent', (args: any[]) => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.codegenVbNetProjectAllAbiCurrent', (args: any[]) => {
         codeGenerateAllFilesFromAbiInCurrentFolder(1, args, diagnosticCollection);
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.codegenFSharpProjectAllAbiCurrent', (args: any[]) => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.codegenFSharpProjectAllAbiCurrent', (args: any[]) => {
         codeGenerateAllFilesFromAbiInCurrentFolder(3, args, diagnosticCollection);
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.codeGenFromNethereumGenAbisFile', (args: any[]) => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.codeGenFromNethereumGenAbisFile', (args: any[]) => {
         codeGenerateAllFilesFromNethereumGenAbisFile(args, diagnosticCollection);
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.fixDocument', () => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.fixDocument', () => {
         lintAndfixCurrentDocument();
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.compilerInfo', async () => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.compilerInfo', async () => {
         await compiler.outputCompilerInfoEnsuringInitialised();
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.solcReleases', async () => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.solcReleases', async () => {
         compiler.outputSolcReleases();
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.selectWorkspaceRemoteSolcVersion', async () => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.selectWorkspaceRemoteSolcVersion', async () => {
         compiler.selectRemoteVersion(vscode.ConfigurationTarget.Workspace);
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.downloadRemoteSolcVersion', async () => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.downloadRemoteSolcVersion', async () => {
         const root = workspaceUtil.getCurrentWorkspaceRootFolder();
         compiler.downloadRemoteVersion(root.uri.fsPath);
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.downloadVerifiedSmartContractEtherscan', async () => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.downloadVerifiedSmartContractEtherscan', async () => {
         await EtherscanContractDownloader.downloadContractWithPrompts();
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.downloadRemoteVersionAndSetLocalPathSetting', async () => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.downloadRemoteVersionAndSetLocalPathSetting', async () => {
         const root = workspaceUtil.getCurrentWorkspaceRootFolder();
         compiler.downloadRemoteVersionAndSetLocalPathSetting(vscode.ConfigurationTarget.Workspace, root.uri.fsPath);
     }));
 
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.selectGlobalRemoteSolcVersion', async () => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.selectGlobalRemoteSolcVersion', async () => {
         compiler.selectRemoteVersion(vscode.ConfigurationTarget.Global);
     }));
 
-    context.subscriptions.push(vscode.commands.registerCommand('solidity.changeDefaultCompilerType', async () => {
+    context.subscriptions.push(vscode.commands.registerCommand('seismic.changeDefaultCompilerType', async () => {
         compiler.changeDefaultCompilerType(vscode.ConfigurationTarget.Workspace);
     }));
 
@@ -220,7 +220,7 @@ export async function activate(context: vscode.ExtensionContext) {
         revealOutputChannelOn: RevealOutputChannelOn.Never,
         synchronize: {
             // Synchronize the setting section 'solidity' to the server
-            configurationSection: 'solidity',
+            configurationSection: 'seismic',
             // Notify the server about file changes to '.sol.js files contain in the workspace (TODO node, linter)
             fileEvents: vscode.workspace.createFileSystemWatcher('{**/remappings.txt,**/.solhint.json,**/.soliumrc.json,**/brownie-config.yaml}'),
         },

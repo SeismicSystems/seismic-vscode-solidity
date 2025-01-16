@@ -2,9 +2,9 @@
   "name": "seismic",
   "description": "Seismic extension for Visual Studio Code",
   "keywords": [
-      "seismic"
+    "seismic"
   ],
-  "version": "0.0.178",
+  "version": "0.0.179",
   "publisher": "SeismicSys",
   "license": "MIT",
   "engines": {
@@ -85,39 +85,39 @@
   "contributes": {
     "configuration": {
       "type": "object",
-      "title": "Solidity configuration",
+      "title": "Seismic configuration",
       "properties": {
-        "solidity.nodemodulespackage": {
+        "seismic.nodemodulespackage": {
           "type": "string",
           "default": "solc",
           "description": "The node modules package to find the solcjs compiler"
         },
-        "solidity.compileUsingRemoteVersion": {
+        "seismic.compileUsingRemoteVersion": {
           "type": "string",
           "default": "latest",
           "description": "Configuration to download a 'remote' solc (js) version binary file from 'https://seismicsystems.github.io/solc-bin', for example: 'latest' will always use the latest version, or a specific version like: 'v0.4.3+commit.2353da71', use the command 'Solidity: Get solidity releases' to list all versions available, or just right click in a solidity file and select either `Solidity: Change global compiler version (Remote)` or `Solidity: Change workspace compiler version (Remote)` to use the wizard to set the correct version or setting for either the current workspace or globally"
         },
-        "solidity.compilerOptimization": {
+        "seismic.compilerOptimization": {
           "type": "number",
           "default": 200,
           "description": "Optimize for how many times you intend to run the code. Lower values will optimize more for initial deployment cost, higher values will optimize more for high-frequency usage."
         },
-        "solidity.evmVersion": {
+        "seismic.evmVersion": {
           "type": "string",
           "default": "",
           "description": "Evm version, ie london, istanbul, petersburg, constantinople, byzantium, tangerineWhistle, spuriousDragon, homestead, frontier, or leave it blank for the default evm version"
         },
-        "solidity.viaIR": {
+        "seismic.viaIR": {
           "type": "boolean",
           "default": false,
           "description": "Compile using the intermediate representation (IR) instead of the AST"
         },
-        "solidity.compileUsingLocalVersion": {
+        "seismic.compileUsingLocalVersion": {
           "type": "string",
           "default": "",
           "description": "Compile using a local solc (js) binary file, please include the path of the file if wanted: 'C://v0.4.3+commit.2353da71.js'"
         },
-        "solidity.defaultCompiler": {
+        "seismic.defaultCompiler": {
           "type": "string",
           "description": "Sets the default compiler and compiler configuration to use. Remote will use the configured compiler using the setting 'compileUsingRemoteVersion' downloaded from https://seismicsystems.github.io/solc-bin', `localFile` will use the solc file in the location configured in the setting: `compileUsingLocalVersion`, `localNodeModule` will attempt to find the solc file in the node_modules folder / package configured on 'nodemodulespackage' and 'embedded' which will use the solc version packaged with the extension. The default is 'remote' which is configured as 'latest'",
           "enum": [
@@ -128,7 +128,7 @@
           ],
           "default": "remote"
         },
-        "solidity.linter": {
+        "seismic.linter": {
           "type": "string",
           "enum": [
             "",
@@ -138,14 +138,14 @@
           "default": "solhint",
           "description": "Enables linting using either solium (ethlint) or solhint. Possible options 'solhint' and 'solium', the default is solhint"
         },
-        "solidity.solhintRules": {
+        "seismic.solhintRules": {
           "type": [
             "object"
           ],
           "default": null,
           "description": "Solhint linting validation rules"
         },
-        "solidity.formatter": {
+        "seismic.formatter": {
           "type": "string",
           "default": "prettier",
           "enum": [
@@ -155,7 +155,7 @@
           ],
           "description": "Enables / disables the solidity formatter prettier (default) or forge (note it needs to be installed)"
         },
-        "solidity.soliumRules": {
+        "seismic.soliumRules": {
           "type": [
             "object"
           ],
@@ -173,17 +173,17 @@
           },
           "description": "Solium linting validation rules"
         },
-        "solidity.enabledAsYouTypeCompilationErrorCheck": {
+        "seismic.enabledAsYouTypeCompilationErrorCheck": {
           "type": "boolean",
           "default": true,
           "description": "Enables as you type compilation of the document and error highlighting"
         },
-        "solidity.validationDelay": {
+        "seismic.validationDelay": {
           "type": "number",
           "default": 1500,
           "description": "Delay to trigger the validation of the changes of the current document (compilation, solium)"
         },
-        "solidity.packageDefaultDependenciesDirectory": {
+        "seismic.packageDefaultDependenciesDirectory": {
           "type": [
             "string",
             "string[]"
@@ -194,12 +194,12 @@
           ],
           "description": "Default directory for Packages Dependencies, i.e: 'node_modules', 'lib'. This is used to avoid typing imports with that path prefix, multiple dependency paths can be set as an array: ['node_modules', 'lib'] "
         },
-        "solidity.monoRepoSupport": {
+        "seismic.monoRepoSupport": {
           "type": "boolean",
           "default": true,
           "description": "Enables mono repo support in the current workspace, a project folder will be signaled if a file is found on the current folder or above including: remappings.txt, truffle-config.js, brownie-config.yaml, foundry.toml, hardhat.config.js, hardhat.config.ts, dappfile"
         },
-        "solidity.packageDefaultDependenciesContractsDirectory": {
+        "seismic.packageDefaultDependenciesContractsDirectory": {
           "type": [
             "string",
             "string[]"
@@ -211,37 +211,37 @@
           ],
           "description": "Default directory where the Package Dependency store its contracts, i.e: 'src', 'contracts', or just a blank string '', this is used to avoid typing imports with subfolder paths"
         },
-        "solidity.remappings": {
+        "seismic.remappings": {
           "type": "array",
           "default": [],
           "description": "Remappings to resolve contracts to local files / directories, i.e: [\"@openzeppelin/=lib/openzeppelin-contracts\",\"ds-test/=lib/ds-test/src/\"]"
         },
-        "solidity.remappingsWindows": {
+        "seismic.remappingsWindows": {
           "type": "array",
           "default": [],
           "description": "Windows Remappings to resolve contracts to local Windows files / directories (Note this overrides the generic remapping settings if the OS is Windows) , i.e: [\"@openzeppelin/=C:/lib/openzeppelin-contracts\",\"ds-test/=C:/lib/ds-test/src/\"]"
         },
-        "solidity.remappingsUnix": {
+        "seismic.remappingsUnix": {
           "type": "array",
           "default": [],
           "description": "Unix Remappings to resolve contracts to local Unix files / directories (Note this overrides the generic remapping settings if the OS is Unix based), i.e: [\"@openzeppelin/=/opt/lib/openzeppelin-contracts\",\"ds-test/=/opt/lib/ds-test/src/\"]"
         },
-        "solidity.explorer_etherscan_apikey": {
+        "seismic.explorer_etherscan_apikey": {
           "type": "string",
           "default": "YourApiKey",
           "description": "Api key for downloading ethereum smart contracts from etherscan.io"
         },
-        "solidity.explorer_etherscan_optimism_apikey": {
+        "seismic.explorer_etherscan_optimism_apikey": {
           "type": "string",
           "default": "YourApiKey",
           "description": "Api key for downloading optimism smart contracts from api-optimistic.etherscan.io"
         },
-        "solidity.explorer_bscscan_apikey": {
+        "seismic.explorer_bscscan_apikey": {
           "type": "string",
           "default": "YourApiKey",
           "description": "Api key for downloading Binance smart chain smart contracts from api.bscscan.com"
         },
-        "solidity.explorer_polygonscan_apikey": {
+        "seismic.explorer_polygonscan_apikey": {
           "type": "string",
           "default": "YourApiKey",
           "description": "Api key for downloading polygon smart contracts from api.polygonscan.com"
@@ -284,329 +284,329 @@
     },
     "commands": [
       {
-        "command": "solidity.compile.active",
-        "title": "Solidity: Compile Contract"
+        "command": "seismic.compile.active",
+        "title": "Seismic: Compile Contract"
       },
       {
-        "command": "solidity.compile.activeUsingRemote",
-        "title": "Solidity: Compile with configured Remote version"
+        "command": "seismic.compile.activeUsingRemote",
+        "title": "Seismic: Compile with configured Remote version"
       },
       {
-        "command": "solidity.compile.activeUsingLocalFile",
-        "title": "Solidity: Compile with configured Local solc file"
+        "command": "seismic.compile.activeUsingLocalFile",
+        "title": "Seismic: Compile with configured Local solc file"
       },
       {
-        "command": "solidity.compile.activeUsingNodeModule",
-        "title": "Solidity: Compile with configured Node module"
+        "command": "seismic.compile.activeUsingNodeModule",
+        "title": "Seismic: Compile with configured Node module"
       },
       {
-        "command": "solidity.compile",
-        "title": "Solidity: Compile All"
+        "command": "seismic.compile",
+        "title": "Seismic: Compile All"
       },
       {
-        "command": "solidity.compilerInfo",
-        "title": "Solidity: Compiler Information"
+        "command": "seismic.compilerInfo",
+        "title": "Seismic: Compiler Information"
       },
       {
-        "command": "solidity.solcReleases",
-        "title": "Solidity: Get solidity releases"
+        "command": "seismic.solcReleases",
+        "title": "Seismic: Get solidity releases"
       },
       {
-        "command": "solidity.codegenNethereumCodeGenSettings",
-        "title": "Solidity: Create 'nethereum-gen.settings' with default values at root"
+        "command": "seismic.codegenNethereumCodeGenSettings",
+        "title": "Seismic: Create 'nethereum-gen.settings' with default values at root"
       },
       {
-        "command": "solidity.codegenCSharpProject",
-        "title": "Solidity: Code generate CSharp contract definition"
+        "command": "seismic.codegenCSharpProject",
+        "title": "Seismic: Code generate CSharp contract definition"
       },
       {
-        "command": "solidity.compileAndCodegenCSharpProject",
-        "title": "Solidity: Compile and Code generate CSharp contract definition"
+        "command": "seismic.compileAndCodegenCSharpProject",
+        "title": "Seismic: Compile and Code generate CSharp contract definition"
       },
       {
-        "command": "solidity.codegenVbNetProject",
-        "title": "Solidity: Code generate VB.Net contract definition"
+        "command": "seismic.codegenVbNetProject",
+        "title": "Seismic: Code generate VB.Net contract definition"
       },
       {
-        "command": "solidity.compileAndCodegenVbNetProject",
-        "title": "Solidity: Compile and Code generate VB.Net contract definition"
+        "command": "seismic.compileAndCodegenVbNetProject",
+        "title": "Seismic: Compile and Code generate VB.Net contract definition"
       },
       {
-        "command": "solidity.codegenFSharpProject",
-        "title": "Solidity: Code generate FSharp contract definition"
+        "command": "seismic.codegenFSharpProject",
+        "title": "Seismic: Code generate FSharp contract definition"
       },
       {
-        "command": "solidity.compileAndCodegenFSharpProject",
-        "title": "Solidity: Compile and Code generate FSharp contract definition"
+        "command": "seismic.compileAndCodegenFSharpProject",
+        "title": "Seismic: Compile and Code generate FSharp contract definition"
       },
       {
-        "command": "solidity.codegenCSharpProjectAll",
-        "title": "Solidity: Code generate CSharp Project from all compiled files"
+        "command": "seismic.codegenCSharpProjectAll",
+        "title": "Seismic: Code generate CSharp Project from all compiled files"
       },
       {
-        "command": "solidity.codegenVbNetProjectAll",
-        "title": "Solidity: Code generate VB.Net Project from all compiled files"
+        "command": "seismic.codegenVbNetProjectAll",
+        "title": "Seismic: Code generate VB.Net Project from all compiled files"
       },
       {
-        "command": "solidity.codegenFSharpProjectAll",
-        "title": "Solidity: Code generate FSharp Project from all compiled files"
+        "command": "seismic.codegenFSharpProjectAll",
+        "title": "Seismic: Code generate FSharp Project from all compiled files"
       },
       {
-        "command": "solidity.codegenCSharpProjectAllAbiCurrent",
-        "title": "Solidity: Code generate CSharp Definitions for Abi files in current folder"
+        "command": "seismic.codegenCSharpProjectAllAbiCurrent",
+        "title": "Seismic: Code generate CSharp Definitions for Abi files in current folder"
       },
       {
-        "command": "solidity.codegenVbNetProjectAllAbiCurrent",
-        "title": "Solidity: Code generate VB.Net Definitions for Abi files in current folder"
+        "command": "seismic.codegenVbNetProjectAllAbiCurrent",
+        "title": "Seismic: Code generate VB.Net Definitions for Abi files in current folder"
       },
       {
-        "command": "solidity.codegenFSharpProjectAllAbiCurrent",
-        "title": "Solidity: Code generate FSharp Definitions for Abi files in current folder"
+        "command": "seismic.codegenFSharpProjectAllAbiCurrent",
+        "title": "Seismic: Code generate FSharp Definitions for Abi files in current folder"
       },
       {
-        "command": "solidity.codeGenFromNethereumGenAbisFile",
-        "title": "Solidity: Code generate Definitions for Abi files in selected 'nethereum-gen.multisettings'"
+        "command": "seismic.codeGenFromNethereumGenAbisFile",
+        "title": "Seismic: Code generate Definitions for Abi files in selected 'nethereum-gen.multisettings'"
       },
       {
-        "command": "solidity.fixDocument",
-        "title": "Solidity: Fix document rules using Solium"
+        "command": "seismic.fixDocument",
+        "title": "Seismic: Fix document rules using Solium"
       },
       {
-        "command": "solidity.selectWorkspaceRemoteSolcVersion",
-        "title": "Solidity: Change workspace compiler version (Remote)"
+        "command": "seismic.selectWorkspaceRemoteSolcVersion",
+        "title": "Seismic: Change workspace compiler version (Remote)"
       },
       {
-        "command": "solidity.selectGlobalRemoteSolcVersion",
-        "title": "Solidity: Change global compiler version (Remote)"
+        "command": "seismic.selectGlobalRemoteSolcVersion",
+        "title": "Seismic: Change global compiler version (Remote)"
       },
       {
-        "command": "solidity.downloadRemoteSolcVersion",
-        "title": "Solidity: Download compiler"
+        "command": "seismic.downloadRemoteSolcVersion",
+        "title": "Seismic: Download compiler"
       },
       {
-        "command": "solidity.downloadRemoteVersionAndSetLocalPathSetting",
-        "title": "Solidity: Download compiler and set workspace local Path"
+        "command": "seismic.downloadRemoteVersionAndSetLocalPathSetting",
+        "title": "Seismic: Download compiler and set workspace local Path"
       },
       {
-        "command": "solidity.changeDefaultCompilerType",
-        "title": "Solidity: Change the default workspace compiler to Remote, Local, NodeModule, Embedded"
+        "command": "seismic.changeDefaultCompilerType",
+        "title": "Seismic: Change the default workspace compiler to Remote, Local, NodeModule, Embedded"
       },
       {
-        "command": "solidity.downloadVerifiedSmartContractEtherscan",
-        "title": "Solidity: Download smart contract source code / abi (Etherscan)"
+        "command": "seismic.downloadVerifiedSmartContractEtherscan",
+        "title": "Seismic: Download smart contract source code / abi (Etherscan)"
       }
     ],
     "menus": {
       "commandPalette": [
         {
           "when": "resourceExtname == .abi || resourceExtname == .json",
-          "command": "solidity.codegenCSharpProject"
+          "command": "seismic.codegenCSharpProject"
         },
         {
           "when": "resourceExtname == .abi || resourceExtname == .json",
-          "command": "solidity.codegenVbNetProject"
+          "command": "seismic.codegenVbNetProject"
         },
         {
           "when": "resourceExtname == .abi || resourceExtname == .json",
-          "command": "solidity.codegenFSharpProject"
+          "command": "seismic.codegenFSharpProject"
         },
         {
           "when": "resourceExtname == .sol",
-          "command": "solidity.compile.active"
+          "command": "seismic.compile.active"
         },
         {
           "when": "explorerResourceIsFolder || resourceExtname == .sol || resourceExtname == .abi",
-          "command": "solidity.downloadVerifiedSmartContractEtherscan"
+          "command": "seismic.downloadVerifiedSmartContractEtherscan"
         },
         {
           "when": "resourceExtname == .sol",
-          "command": "solidity.compile"
+          "command": "seismic.compile"
         }
       ],
       "editor/context": [
         {
           "when": "editorLangId == 'solidity'",
-          "command": "solidity.compile.active",
+          "command": "seismic.compile.active",
           "group": "1_solidity"
         },
         {
           "when": "editorLangId == 'solidity'",
-          "command": "solidity.compile",
+          "command": "seismic.compile",
           "group": "1_solidity"
         },
         {
           "when": "editorLangId == 'solidity'",
-          "command": "solidity.compilerInfo",
+          "command": "seismic.compilerInfo",
           "group": "1_solidity"
         },
         {
           "when": "editorLangId == 'solidity'",
-          "command": "solidity.compile.activeUsingRemote",
+          "command": "seismic.compile.activeUsingRemote",
           "group": "1_solidity"
         },
         {
           "when": "editorLangId == 'solidity'",
-          "command": "solidity.compile.activeUsingLocalFile",
+          "command": "seismic.compile.activeUsingLocalFile",
           "group": "1_solidity"
         },
         {
           "when": "editorLangId == 'solidity'",
-          "command": "solidity.compile.activeUsingNodeModule",
+          "command": "seismic.compile.activeUsingNodeModule",
           "group": "1_solidity"
         },
         {
           "when": "editorLangId == 'solidity'",
-          "command": "solidity.downloadVerifiedSmartContractEtherscan",
+          "command": "seismic.downloadVerifiedSmartContractEtherscan",
           "group": "1_solidity"
         },
         {
           "when": "editorLangId == 'solidity'",
-          "command": "solidity.changeDefaultCompilerType",
+          "command": "seismic.changeDefaultCompilerType",
           "group": "2_solidity"
         },
         {
           "when": "editorLangId == 'solidity'",
-          "command": "solidity.solcReleases",
+          "command": "seismic.solcReleases",
           "group": "2_solidity"
         },
         {
           "when": "editorLangId == 'solidity'",
-          "command": "solidity.selectGlobalRemoteSolcVersion",
+          "command": "seismic.selectGlobalRemoteSolcVersion",
           "group": "2_solidity"
         },
         {
           "when": "editorLangId == 'solidity'",
-          "command": "solidity.selectWorkspaceRemoteSolcVersion",
+          "command": "seismic.selectWorkspaceRemoteSolcVersion",
           "group": "2_solidity"
         },
         {
           "when": "editorLangId == 'solidity'",
-          "command": "solidity.downloadRemoteSolcVersion",
+          "command": "seismic.downloadRemoteSolcVersion",
           "group": "2_solidity"
         },
         {
           "when": "editorLangId == 'solidity'",
-          "command": "solidity.downloadRemoteVersionAndSetLocalPathSetting",
+          "command": "seismic.downloadRemoteVersionAndSetLocalPathSetting",
           "group": "2_solidity"
         },
         {
           "when": "editorLangId == 'solidity'",
-          "command": "solidity.codegenNethereumCodeGenSettings",
+          "command": "seismic.codegenNethereumCodeGenSettings",
           "group": "3_solidity"
         },
         {
           "when": "editorLangId == 'solidity'",
-          "command": "solidity.compileAndCodegenCSharpProject",
+          "command": "seismic.compileAndCodegenCSharpProject",
           "group": "3_solidity"
         },
         {
           "when": "editorLangId == 'solidity'",
-          "command": "solidity.compileAndCodegenVbNetProject",
+          "command": "seismic.compileAndCodegenVbNetProject",
           "group": "3_solidity"
         },
         {
           "when": "editorLangId == 'solidity'",
-          "command": "solidity.compileAndCodegenFSharpProject",
+          "command": "seismic.compileAndCodegenFSharpProject",
           "group": "3_solidity"
         },
         {
           "when": "resourceExtname == .abi",
-          "command": "solidity.codegenCSharpProject",
+          "command": "seismic.codegenCSharpProject",
           "group": "3_solidity"
         },
         {
           "when": "resourceExtname == .abi",
-          "command": "solidity.codegenVbNetProject",
+          "command": "seismic.codegenVbNetProject",
           "group": "3_solidity"
         },
         {
           "when": "resourceExtname == .abi",
-          "command": "solidity.codegenFSharpProject",
+          "command": "seismic.codegenFSharpProject",
           "group": "3_solidity"
         },
         {
           "when": "resourceExtname == .abi",
-          "command": "solidity.codegenCSharpProjectAllAbiCurrent",
+          "command": "seismic.codegenCSharpProjectAllAbiCurrent",
           "group": "3_solidity"
         },
         {
           "when": "resourceExtname == .abi",
-          "command": "solidity.codegenVbNetProjectAllAbiCurrent",
+          "command": "seismic.codegenVbNetProjectAllAbiCurrent",
           "group": "3_solidity"
         },
         {
           "when": "resourceExtname == .abi",
-          "command": "solidity.codegenFSharpProjectAllAbiCurrent",
+          "command": "seismic.codegenFSharpProjectAllAbiCurrent",
           "group": "3_solidity"
         },
         {
           "when": "resourceFilename =~ /^(.*\\.)?nethereum-gen\\.multisettings$/",
-          "command": "solidity.codeGenFromNethereumGenAbisFile",
+          "command": "seismic.codeGenFromNethereumGenAbisFile",
           "group": "3_solidity"
         }
       ],
       "explorer/context": [
         {
           "when": "resourceExtname == .abi",
-          "command": "solidity.codegenCSharpProject",
+          "command": "seismic.codegenCSharpProject",
           "group": "3_solidity"
         },
         {
           "when": "resourceExtname == .abi",
-          "command": "solidity.codegenVbNetProject",
+          "command": "seismic.codegenVbNetProject",
           "group": "3_solidity"
         },
         {
           "when": "resourceExtname == .abi",
-          "command": "solidity.codegenFSharpProject",
+          "command": "seismic.codegenFSharpProject",
           "group": "3_solidity"
         },
         {
           "when": "resourceExtname == .sol",
-          "command": "solidity.compile.active",
+          "command": "seismic.compile.active",
           "group": "2_solidity"
         },
         {
           "when": "resourceExtname == .sol",
-          "command": "solidity.compile",
+          "command": "seismic.compile",
           "group": "2_solidity"
         },
         {
           "when": "resourceExtname == .abi",
-          "command": "solidity.codegenCSharpProjectAllAbiCurrent",
+          "command": "seismic.codegenCSharpProjectAllAbiCurrent",
           "group": "3_solidity"
         },
         {
           "when": "resourceExtname == .abi",
-          "command": "solidity.codegenVbNetProjectAllAbiCurrent",
+          "command": "seismic.codegenVbNetProjectAllAbiCurrent",
           "group": "3_solidity"
         },
         {
           "when": "resourceExtname == .abi",
-          "command": "solidity.codegenFSharpProjectAllAbiCurrent",
+          "command": "seismic.codegenFSharpProjectAllAbiCurrent",
           "group": "3_solidity"
         },
         {
           "when": "explorerResourceIsFolder || resourceExtname == .sol || resourceExtname == .abi",
-          "command": "solidity.downloadVerifiedSmartContractEtherscan",
+          "command": "seismic.downloadVerifiedSmartContractEtherscan",
           "group": "2_solidity"
         },
         {
           "when": "resourceFilename =~ /^(.*\\.)?nethereum-gen\\.multisettings$/",
-          "command": "solidity.codeGenFromNethereumGenAbisFile",
+          "command": "seismic.codeGenFromNethereumGenAbisFile",
           "group": "3_solidity"
         }
       ]
     },
     "keybindings": [
       {
-        "command": "solidity.compile.active",
+        "command": "seismic.compile.active",
         "key": "f5",
         "mac": "f5",
         "when": "editorTextFocus && editorLangId == 'solidity'"
       },
       {
-        "command": "solidity.compile",
+        "command": "seismic.compile",
         "key": "Ctrl+f5",
         "mac": "Cmd+f5",
         "when": "editorTextFocus && editorLangId == 'solidity'"

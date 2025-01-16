@@ -3,7 +3,7 @@ import * as prettier from './prettierFormatter';
 import * as forge from './forgeFormatter';
 
 export async function formatDocument(document: vscode.TextDocument, context: vscode.ExtensionContext): Promise<vscode.TextEdit[]> {
-  const formatter = vscode.workspace.getConfiguration('solidity').get<string>('formatter');
+  const formatter = vscode.workspace.getConfiguration('seismic').get<string>('formatter');
   console.log(formatter);
   switch (formatter) {
     case 'prettier':
