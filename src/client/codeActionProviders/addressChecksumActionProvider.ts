@@ -56,7 +56,7 @@ export class AddressChecksumCodeActionProvider implements vscode.CodeActionProvi
         public static createFix(document: vscode.TextDocument, diagnostic: vscode.Diagnostic): vscode.CodeAction {
 
             const fix = new vscode.CodeAction(`Change workspace compiler version`, vscode.CodeActionKind.QuickFix);
-            fix.command = { command: 'solidity.selectWorkspaceRemoteSolcVersion',
+            fix.command = { command: 'seismic.selectWorkspaceRemoteSolcVersion',
                             title: 'Change the workspace remote compiler version',
                             tooltip: 'This will open a prompt with the solidity version' };
             fix.diagnostics = [diagnostic];
