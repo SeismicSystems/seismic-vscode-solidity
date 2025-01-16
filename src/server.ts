@@ -32,7 +32,7 @@ const standAloneServerSide = false; // put this in the package json .. use this 
 // the standalone server and loade the default settings from package.json
 
 
-interface SeismicSoliditySettings {
+interface SoliditySettings {
     // option for backward compatibilities, please use "linter" option instead
     linter: boolean | string;
     enabledAsYouTypeCompilationErrorCheck: boolean;
@@ -57,12 +57,12 @@ interface SeismicSoliditySettings {
     viaIR: boolean;
 }
 
-const defaultSeismicSoliditySettings = {} as SeismicSoliditySettings;
+const defaultSoliditySettings = {} as SoliditySettings;
 Object.entries(packageJson.contributes.configuration.properties)
     .forEach(([key, value]) => {
         const keys = key.split('.');
-        if (keys.length === 2 && keys[0] === 'seismic') {
-            defaultSeismicSoliditySettings[keys[1]] = value.default;
+        if (keys.length === 2 && keys[0] === 'solidity') {
+            defaultSoliditySettings[keys[1]] = value.default;
         }
     });
 
@@ -240,7 +240,7 @@ function validate(document: TextDocument) {
     }
 }
 
-function updateSoliditySettings(soliditySettings: SeismicSoliditySettings) {
+function updateSoliditySettings(soliditySettings: SoliditySettings) {
     enabledAsYouTypeErrorCheck = soliditySettings.enabledAsYouTypeCompilationErrorCheck;
     compileUsingLocalVersion = soliditySettings.compileUsingLocalVersion;
     compileUsingRemoteVersion = soliditySettings.compileUsingRemoteVersion;
@@ -435,7 +435,7 @@ connection.onInitialize((params): InitializeResult => {
     }
 
     if (standAloneServerSide) {
-        updateSoliditySettings(defaultSeismicSoliditySettings);
+        updateSoliditySettings(defaultSoliditySettings);
     }
     return result;
 });
@@ -477,7 +477,7 @@ connection.onDidChangeWatchedFiles(_change => {
 connection.onDidChangeConfiguration((change) => {
     if (standAloneServerSide) {
         updateSoliditySettings({
-            ...defaultSeismicSoliditySettings,
+            ...defaultSoliditySettings,
             ...(change.settings?.seismic || {}),
         });
     } else {
@@ -489,13 +489,13 @@ connection.onDidChangeConfiguration((change) => {
 
 });
 
-function linterName(settings: SeismicSoliditySettings) {
+function linterName(settings: SoliditySettings) {
     return settings.linter;
 }
 
 
 
-function linterRules(settings: SeismicSoliditySettings) {
+function linterRules(settings: SoliditySettings) {
     const _linterName = linterName(settings);
     if (_linterName === 'solium') {
         return settings.soliumRules;
