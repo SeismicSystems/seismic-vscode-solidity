@@ -242,7 +242,7 @@ function validate(document: TextDocument) {
 
 function updateSoliditySettings(soliditySettings: SeismicSoliditySettings) {
     console.log('ENABLED AS YOU TYPE COMPILATION ERROR CHECK: ' + soliditySettings.enabledAsYouTypeCompilationErrorCheck);
-    enabledAsYouTypeErrorCheck = soliditySettings.enabledAsYouTypeCompilationErrorCheck;
+    enabledAsYouTypeErrorCheck = true; // TODO: remove this and replace with soliditySettings.enabledAsYouTypeCompilationErrorCheck
     compileUsingLocalVersion = soliditySettings.compileUsingLocalVersion;
     compileUsingRemoteVersion = soliditySettings.compileUsingRemoteVersion;
     solhintDefaultRules = soliditySettings.solhintRules;
