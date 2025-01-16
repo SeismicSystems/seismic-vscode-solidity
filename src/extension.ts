@@ -220,7 +220,7 @@ export async function activate(context: vscode.ExtensionContext) {
         revealOutputChannelOn: RevealOutputChannelOn.Never,
         synchronize: {
             // Synchronize the setting section 'solidity' to the server
-            configurationSection: 'solidity',
+            configurationSection: 'seismic',
             // Notify the server about file changes to '.sol.js files contain in the workspace (TODO node, linter)
             fileEvents: vscode.workspace.createFileSystemWatcher('{**/remappings.txt,**/.solhint.json,**/.soliumrc.json,**/brownie-config.yaml}'),
         },
