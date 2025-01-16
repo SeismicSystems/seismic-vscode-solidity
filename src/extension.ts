@@ -30,7 +30,7 @@ let compiler: Compiler;
 
 export async function activate(context: vscode.ExtensionContext) {
     const ws = workspace.workspaceFolders;
-    diagnosticCollection = vscode.languages.createDiagnosticCollection('solidity');
+    diagnosticCollection = vscode.languages.createDiagnosticCollection('seismic');
     compiler = new Compiler(context.extensionPath);
 
     context.subscriptions.push(diagnosticCollection);
