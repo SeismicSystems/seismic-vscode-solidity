@@ -55,7 +55,7 @@ export class SourceDocumentCollection {
 
         if (evmVersion === "" || evmVersion === undefined || evmVersion === null) {
             const compilation = {
-                language: 'Solidity',
+                language: 'Seismic Solidity',
                 settings:
                 {
                     optimizer: {
@@ -71,7 +71,7 @@ export class SourceDocumentCollection {
             return compilation;
         } else {
             const compilation = {
-                language: 'Solidity',
+                language: 'Seismic Solidity',
                 settings:
                 {
                     optimizer: {
