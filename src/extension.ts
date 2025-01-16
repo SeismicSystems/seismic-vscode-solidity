@@ -171,27 +171,27 @@ export async function activate(context: vscode.ExtensionContext) {
     }));
 
     context.subscriptions.push(
-        vscode.languages.registerDocumentFormattingEditProvider('seismic', {
+        vscode.languages.registerDocumentFormattingEditProvider('solidity', {
             async provideDocumentFormattingEdits(document: vscode.TextDocument): Promise<vscode.TextEdit[]> {
                 return await formatDocument(document, context);
             },
         }));
 
     context.subscriptions.push(
-        vscode.languages.registerCodeActionsProvider('seismic', new AddressChecksumCodeActionProvider(), {
+        vscode.languages.registerCodeActionsProvider('solidity', new AddressChecksumCodeActionProvider(), {
             providedCodeActionKinds: AddressChecksumCodeActionProvider.providedCodeActionKinds,
         }),
     );
 
     context.subscriptions.push(
-        vscode.languages.registerCodeActionsProvider('seismic', new SPDXCodeActionProvider(), {
+        vscode.languages.registerCodeActionsProvider('solidity', new SPDXCodeActionProvider(), {
             providedCodeActionKinds: SPDXCodeActionProvider.providedCodeActionKinds,
         }),
     );
 
 
     context.subscriptions.push(
-        vscode.languages.registerCodeActionsProvider('seismic', new ChangeCompilerVersionActionProvider(), {
+        vscode.languages.registerCodeActionsProvider('solidity', new ChangeCompilerVersionActionProvider(), {
             providedCodeActionKinds: ChangeCompilerVersionActionProvider.providedCodeActionKinds,
         }),
     );
@@ -219,7 +219,7 @@ export async function activate(context: vscode.ExtensionContext) {
         revealOutputChannelOn: RevealOutputChannelOn.Never,
         synchronize: {
             // Synchronize the setting section 'solidity' to the server
-            configurationSection: 'seismic',
+            configurationSection: 'solidity',
             // Notify the server about file changes to '.sol.js files contain in the workspace (TODO node, linter)
             fileEvents: vscode.workspace.createFileSystemWatcher('{**/remappings.txt,**/.solhint.json,**/.soliumrc.json,**/brownie-config.yaml}'),
         },
