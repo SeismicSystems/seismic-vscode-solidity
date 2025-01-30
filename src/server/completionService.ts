@@ -142,7 +142,7 @@ export class CompletionService {
 
 export function GetCompletionTypes(): CompletionItem[] {
     const completionItems = [];
-    const types = ['address', 'string', 'bytes', 'byte', 'int', 'uint', 'bool', 'hash', 'suint', 'sint', 'saddress'];
+    const types = ['address', 'string', 'bytes', 'byte', 'int', 'uint', 'bool', 'hash', 'suint', 'sint', 'saddress', 'sbool'];
     for (let index = 8; index <= 256; index += 8) {
         types.push('int' + index);
         types.push('uint' + index);
