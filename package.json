@@ -17,7 +17,7 @@
   "bugs": {
     "url": "https://github.com/SeismicSystems/seismic-vscode-solidity/issues"
   },
-  "icon": "images/seismic-logo.png",
+  "icon": "images/seismic-logo-new.png",
   "repository": {
     "type": "git",
     "url": "https://github.com/SeismicSystems/seismic-vscode-solidity"
