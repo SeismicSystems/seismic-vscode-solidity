@@ -61,7 +61,7 @@ const defaultSoliditySettings = {} as SoliditySettings;
 Object.entries(packageJson.contributes.configuration.properties)
     .forEach(([key, value]) => {
         const keys = key.split('.');
-        if (keys.length === 2 && keys[0] === 'solidity') {
+        if (keys.length === 2 && keys[0] === 'seismic') {
             defaultSoliditySettings[keys[1]] = value.default;
         }
     });
