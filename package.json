@@ -4,7 +4,7 @@
   "keywords": [
     "seismic"
   ],
-  "version": "0.0.182",
+  "version": "0.0.183",
   "publisher": "SeismicSys",
   "license": "MIT",
   "engines": {
@@ -41,20 +41,18 @@
   },
   "dependencies": {
     "@iarna/toml": "^2.2.5",
+    "@vscode/vsce": "^2.23.0",
     "axios": "^1.4.0",
     "fs-extra": "^4.0.3",
     "glob": "^8.1.0",
-    "@vscode/vsce": "^2.23.0",
-    "nethereum-codegen-old": "npm:nethereum-codegen@^1.0.26",
     "nethereum-codegen": "npm:nethereum-codegen@^2.0.3",
+    "nethereum-codegen-old": "npm:nethereum-codegen@^1.0.26",
     "prettier": "^3.2.4",
     "prettier-plugin-solidity": "^1.3.1",
     "solc": "^0.8.24",
     "solhint": "^4.1.1",
     "solium": "^1.2.5",
     "solparse-exp-jb": "3.0.3",
-    "vscode-languageclient": "^8.1.0",
-    "vscode-languageserver": "^8.1.0",
     "vscode-languageserver-textdocument": "^1.0.8",
     "vscode-uri": "3.0.2",
     "yaml-js": "0.2.3"
@@ -66,7 +64,9 @@
     "tslint": "^5.20.1",
     "tsup": "^7.1.0",
     "typescript": "^5.0.4",
-    "vsce": "^2.12.0"
+    "vsce": "^2.12.0",
+    "vscode-languageclient": "^9.0.1",
+    "vscode-languageserver": "^9.0.1"
   },
   "nyc": {
     "extension": [
