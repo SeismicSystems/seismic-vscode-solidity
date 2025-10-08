@@ -4,7 +4,7 @@
   "keywords": [
     "seismic"
   ],
-  "version": "0.0.183",
+  "version": "0.0.184",
   "publisher": "SeismicSys",
   "license": "MIT",
   "engines": {
@@ -54,6 +54,8 @@
     "solium": "^1.2.5",
     "solparse-exp-jb": "3.0.3",
     "vscode-languageserver-textdocument": "^1.0.8",
+    "vscode-languageclient": "^9.0.1",
+    "vscode-languageserver": "^9.0.1",
     "vscode-uri": "3.0.2",
     "yaml-js": "0.2.3"
   },
