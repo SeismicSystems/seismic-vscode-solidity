@@ -4,7 +4,7 @@
   "keywords": [
     "seismic"
   ],
-  "version": "0.0.184",
+  "version": "0.0.186",
   "publisher": "SeismicSys",
   "license": "MIT",
   "engines": {
@@ -66,9 +66,7 @@
     "tslint": "^5.20.1",
     "tsup": "^7.1.0",
     "typescript": "^5.0.4",
-    "vsce": "^2.12.0",
-    "vscode-languageclient": "^9.0.1",
-    "vscode-languageserver": "^9.0.1"
+    "vsce": "^2.12.0"
   },
   "nyc": {
     "extension": [
